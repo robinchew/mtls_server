@@ -4,7 +4,7 @@ set -x
 
 openssl ecparam -out root.key -name prime256v1 -genkey
 
-openssl req -new -sha256 -key root.key -out root.csr
+openssl req -new -sha256 -key root.key -out root.csr -subj '/CN=root'
 
 openssl x509 -req -sha256 -days 3650 -in root.csr -signkey root.key -out root.crt
 
@@ -20,7 +20,7 @@ openssl x509 -req -in server.csr -CA  root.crt -CAkey root.key -CAcreateserial -
 
 openssl ecparam -out client.key -name prime256v1 -genkey
 
-openssl req -new -sha256 -key client.key -out client.csr
+openssl req -new -sha256 -key client.key -out client.csr -subj '/CN=client'
 
 openssl x509 -req -in client.csr -CA  root.crt -CAkey root.key -CAcreateserial -out client.crt -days 365 -sha256
 
