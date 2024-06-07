@@ -12,9 +12,9 @@ start(_Type, _Args) ->
     [
      {port, 8080},
      {verify,verify_peer},
-     {cacertfile,"/home/robin/work/mtls_server/certs/root.crt"},
-     {certfile,"/home/robin/work/mtls_server/certs/server.crt"},
-     {keyfile,"/home/robin/work/mtls_server/certs/server.key"},
+     {cacertfile,"/var/www/mtls_server/certs/root.crt"},
+     {certfile,"/var/www/mtls_server/certs/server.crt"},
+     {keyfile,"/var/www/mtls_server/certs/server.key"},
      %{fail_if_no_peer_cert, false}, % uncomment to allow client to view without a valid cert
      %{password,"test"}, % use an environment variable for this when a password is on the key file
      {depth,2}
