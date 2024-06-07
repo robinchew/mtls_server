@@ -37,7 +37,7 @@ openssl ecparam -out server.key -name prime256v1 -genkey
 
 openssl req -new -sha256 -key server.key -out server.csr -subj '/C=AU/CN=localhostCN'
 
-faketime '-1437 minutes' bash -c 'openssl x509 -req -in server.csr -CA  root.crt -CAkey root.key -CAcreateserial -out server.crt -days 1 -sha256'
+openssl x509 -req -in server.csr -CA  root.crt -CAkey root.key -CAcreateserial -out server.crt -days 1 -sha256
 
 # Client Certificate
 
@@ -45,6 +45,6 @@ openssl ecparam -out client.key -name prime256v1 -genkey
 
 openssl req -new -sha256 -key client.key -out client.csr -subj '/CN=clientCN'
 
-faketime '-1437 minutes' bash -c 'openssl x509 -req -in client.csr -CA  root.crt -CAkey root.key -CAcreateserial -out client.crt -days 1 -sha256'
+openssl x509 -req -in client.csr -CA  root.crt -CAkey root.key -CAcreateserial -out client.crt -days 1 -sha256
 
 openssl pkcs12 -in client.crt -inkey client.key -out client.p12 -export -name App_Client
