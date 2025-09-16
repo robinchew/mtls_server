@@ -16,6 +16,7 @@ start(_Type, _Args) ->
      {certfile,"/var/www/mtls_server/certs/server.crt"},
      {keyfile,"/var/www/mtls_server/certs/server.key"},
      %{fail_if_no_peer_cert, false}, % uncomment to allow client to view without a valid cert
+     {fail_if_no_peer_cert, true}, % this must be explicitly set if we want failure page if no valid cert
      %{password,"test"}, % use an environment variable for this when a password is on the key file
      {depth,2}
     ],
